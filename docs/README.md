@@ -1,13 +1,13 @@
-# AEGIS-II Mission Technical Documentation
-**Status:** Post-WDR Baseline
-**Date:** Feb 5, 2026
+---
 
-This directory contains the mathematical proofs and safety envelopes for the AEGIS-II verification suite. 
+##  NASA Flight Software Compliance (NPR 7150.2)
+This project is architected according to the **NASA Power of 10** rules for safety-critical code:
 
-###  Document Index
-* **Sheet 01: Trajectory Manifolds** – CR3BP Jacobi Constant derivations.
-* **Sheet 02: Radiation Shielding** – Flux analysis for the Feb 2026 X8.1 Solar Flare.
-* **Sheet 03: GNC Redundancy** – TMR (Triple Modular Redundancy) logical proofs.
-* **Sheet 04: Corridor Stability** – Free-return trajectory boundary definitions.
+- [x] **Rule 1 (Simple Control Flow):** No recursion or complex branching used in trajectory logic.
+- [x] **Rule 2 (Fixed Bounds):** All loops and data structures have fixed, deterministic limits.
+- [x] **Rule 3 (No Dynamic Memory):** Zero use of dynamic memory allocation to prevent heap fragmentation during the 10-day mission.
+- [x] **Rule 5 (Assertion Density):** Minimum of 2 assertions per function to catch anomalous states (e.g., singular positions or NaNs).
+- [x] **Rule 7 (Parameter Validation):** All telemetry inputs are validated for type and range before processing.
 
-**Note:** Uploaded PDFs are stored here to preserve high-fidelity LaTeX notation.
+### 🛡️ Mission Assurance Strategy
+During the simulated **February 2026 X8.1 Solar Flare**, the system utilizes **Triple Modular Redundancy (TMR)**. This ensures that even if radiation causes a bit-flip in one sensor's memory, the majority-voting logic maintains the integrity of the GNC (Guidance, Navigation, and Control) solution.
